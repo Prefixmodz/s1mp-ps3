@@ -1,5 +1,6 @@
 # s1mp-ps3
 #### A nonhost SPRX menu base for Advanced Warfare PS3 made by Execcl and Faultz
+#### Ported to World At War By Prefixツ
 
 ## Prerequisites
 - Visual Studio 2013+
