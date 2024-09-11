@@ -35,7 +35,7 @@ void menu::on_build()
 
 void menu::on_draw()
 {
-	component creator("Created by CrEaTiiOn_Zac & CrEaTiiOn_Faultz", 5, 5, 0.55f, 0.55f, 1.0f, 0, vec4_t(255, 255, 255, 255), vec4_t(208, 57, 163, 255), vec4_t(23, 25, 24, 255), g_vars->fonts.bodyfont, g_vars->materials.white, align_left | border_all);
+	component creator("Created by CrEaTiiOn_Zac & CrEaTiiOn_Faultz Ported By Prefix", 5, 5, 0.55f, 0.55f, 1.0f, 0, vec4_t(255, 255, 255, 255), vec4_t(208, 57, 163, 255), vec4_t(23, 25, 24, 255), g_vars->fonts.bodyfont, g_vars->materials.white, align_left | border_all);
 
 	creator.add();
 
@@ -47,7 +47,7 @@ void menu::on_draw()
 
 	const auto m_menuTab = this->get_current();
 
-	float m_fontScale = 0.55f;
+	float m_fontScale = 0.65f;
 	float m_textHeight = g_vars->fonts.bodyfont->pixelHeight * m_fontScale;
 
 	float m_cursorPos = m_menuTab->get_cursor() - m_menuTab->get_cursor_offset();

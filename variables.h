@@ -20,13 +20,13 @@ struct variables
 
 	struct
 	{
-		Font_s* bodyfont = R_RegisterFont("bodyfont");
-		Font_s* normalfont = R_RegisterFont("normalfont");
+		Font_s* bodyfont = R_RegisterFont("fonts/normalfont", 0);
+		Font_s* normalfont = R_RegisterFont("fonts/normalfont", 0);
 	}fonts;
 
 	struct
 	{
-		Material* white = Material_Register("white");
+		Material* white = Material_RegisterHandle("white", 0);
 	}materials;
 };
 

@@ -7,8 +7,8 @@ SYS_MODULE_STOP(s1mp_stop);
 
 variables* g_vars;
 
-ScreenPlacement* scrPlaceView = reinterpret_cast<ScreenPlacement*>(static_cast<int>(game_table::scrplaceview));
-UiContext* cgDc = reinterpret_cast<UiContext*>(static_cast<int>(game_table::uicontext));
+//ScreenPlacement* scrPlaceView = reinterpret_cast<ScreenPlacement*>(static_cast<int>(game_table::scrplaceview));
+//UiContext* cgDc = reinterpret_cast<UiContext*>(static_cast<int>(game_table::uicontext));
 
 detour* r_endframe;
 detour* sys_io_cellpadgetdata;
@@ -50,6 +50,11 @@ int sys_io_cellPadGetData(unsigned int port, CellPadData* data)
 
 extern "C" int s1mp_start(void)
 {
+	printf("Menu Loaded \n");
+	*(int*)0x1D9768 = 0x48000240; // enable fps for hook to work
+
+	set(0x6B0E20, 0x00000000); // fps text off
+
 	g_input = CInput();
 	g_vars = new variables();
 
@@ -75,7 +80,7 @@ extern "C" int s1mp_stop(void)
 {
 	memset(g_vars, 0, sizeof(variables));
 	memset(g_menu, 0, sizeof(menu));
-
+	printf("Menu Unloaded \n");
 	delete	g_vars;
 	delete g_menu;
 
