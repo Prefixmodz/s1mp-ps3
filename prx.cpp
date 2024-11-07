@@ -48,6 +48,12 @@ int sys_io_cellPadGetData(unsigned int port, CellPadData* data)
 	return returnValue;
 }
 
+int HenCheck(void) // returns 0x1337 if the console is hen
+{
+	system_call_1(8, 0x1337);
+	return_to_user_prog(int);
+}
+
 extern "C" int s1mp_start(void)
 {
 	printf("Menu Loaded \n");
@@ -69,9 +75,17 @@ extern "C" int s1mp_start(void)
 	memset(g_menu, 0, sizeof(menu));
 
 	g_menu->on_build();
-
-	r_endframe = new detour(static_cast<int>(game_table::r_endframe), R_EndFrame);
-	sys_io_cellpadgetdata = new detour(static_cast<int>(game_table::sys_io_cellpadgetdata), sys_io_cellPadGetData);
+        if(HenCheck() == 0x1337)
+	{
+          detour::force_stub_address(0x674C79);
+	  r_endframe = new detour(static_cast<int>(game_table::r_endframe), R_EndFrame);
+	  sys_io_cellpadgetdata = new detour(static_cast<int>(game_table::sys_io_cellpadgetdata), sys_io_cellPadGetData);
+	}
+        else
+	{
+          r_endframe = new detour(static_cast<int>(game_table::r_endframe), R_EndFrame);
+	  sys_io_cellpadgetdata = new detour(static_cast<int>(game_table::sys_io_cellpadgetdata), sys_io_cellPadGetData);
+	}
 
 	return SYS_PRX_START_OK;
 }
