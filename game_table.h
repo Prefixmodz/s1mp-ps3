@@ -32,4 +32,19 @@ enum class game_table
     r_textwidth = 0x569450,
 
     va = 0x3C7CB0
+
+    // BO3
+   /* r_endframe = 0x413314,
+    sys_io_cellpadgetdata = 0xA47EF4,
+
+   
+
+    r_addcmddrawstretchpic = 0x4119C8,
+    r_addcmddrawtext =  0x411E18,
+    material_registerhandle = 0x40A27C,
+    r_registerfont = 0x4012B4,
+    //db_findxassetheader = ,
+    r_textwidth =  0x401688,
+
+    va = 0x63B138 */
 };
